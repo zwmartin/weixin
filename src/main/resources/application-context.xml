@@ -8,8 +8,6 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
-	<context:property-placeholder location="classpath:config.properties"/>
-	
 	<!-- 定义调用对象和调用对象的方法 -->
 	<bean id="jobTask"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
