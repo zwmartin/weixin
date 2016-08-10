@@ -1,6 +1,7 @@
 package com.zw.weixin.base;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Writer;
 
 import javax.servlet.http.HttpServletResponse;
@@ -15,13 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 public class BaseController extends BaseLogger {
 
 	/**
-	 * д��str����ҳ��
+	 * 
+	 * response写出
 	 * 
 	 * @param response
 	 * @param str
 	 * @throws Exception
 	 */
-	public void write(HttpServletResponse response, String str) {
+	protected void write(HttpServletResponse response, String str) {
 		Writer writer = null;
 		try {
 			writer = response.getWriter();
@@ -37,6 +39,17 @@ public class BaseController extends BaseLogger {
 					logger.error(e.getMessage());
 				}
 			}
+		}
+	}
+	
+	protected void close(InputStream is) {
+		if(is != null) {
+			try {
+				is.close();
+			} catch (IOException e) {
+				logger.error(e.getMessage());
+			}
+			is = null;
 		}
 	}
 

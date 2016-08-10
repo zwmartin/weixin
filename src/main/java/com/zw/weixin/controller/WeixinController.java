@@ -1,18 +1,21 @@
 package com.zw.weixin.controller;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.InputStream;
 import java.util.Arrays;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.dom4j.Document;
+import org.dom4j.io.SAXReader;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.zw.weixin.base.BaseController;
 import com.zw.weixin.module.bean.WeiXinAccess;
+import com.zw.weixin.module.message.MsgCenter;
 import com.zw.weixin.module.util.WeixinConstant;
 import com.zw.weixin.util.CodeUtil;
 
@@ -25,6 +28,10 @@ import com.zw.weixin.util.CodeUtil;
 @Controller
 @RequestMapping("/wx")
 public class WeixinController extends BaseController {
+	
+	@Resource
+	private MsgCenter msgCenter;
+	
 	/**
 	 * 微信接入
 	 * 
@@ -56,10 +63,13 @@ public class WeixinController extends BaseController {
 	 */
 	@RequestMapping(value = "/access", method = RequestMethod.POST)
 	public void handleMessage(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
-		String str = null;
-		while ((str = reader.readLine()) != null) {
-			System.out.println(str);
-		}
+		request.setCharacterEncoding("UTF-8");  
+        response.setCharacterEncoding("UTF-8");
+		InputStream is = request.getInputStream();
+		SAXReader saxReader = new SAXReader();
+		Document document = saxReader.read(is);
+		String respContent = msgCenter.handlerReq(document);
+		write(response, respContent);
+		close(is);
 	}
 }
