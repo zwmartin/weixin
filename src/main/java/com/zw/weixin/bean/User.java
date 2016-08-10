@@ -1,4 +1,4 @@
-package com.zwtest.weixin.bean;
+package com.zw.weixin.bean;
 
 public class User {
 	private String id;

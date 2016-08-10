@@ -1,4 +1,4 @@
-package com.zwtest.weixin.http;
+package com.zw.weixin.http;
 
 import java.io.IOException;
 
@@ -20,9 +20,9 @@ import org.slf4j.LoggerFactory;
  * @author martin_zou
  * @version 创建时间：2016年8月10日
  */
-public class HttpHandlerHelper {
+public class HttpHelper {
 
-	public static final Logger logger = LoggerFactory.getLogger(HttpHandlerHelper.class);
+	public static final Logger logger = LoggerFactory.getLogger(HttpHelper.class);
 
 	/**
 	 * 发送GET方式

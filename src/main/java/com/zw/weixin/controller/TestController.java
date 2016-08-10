@@ -1,4 +1,4 @@
-package com.zwtest.weixin.controller;
+package com.zw.weixin.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.zwtest.weixin.bean.User;
-import com.zwtest.weixin.service.UserService;
-import com.zwtest.weixin.util.SpringContextHolder;
+import com.zw.weixin.bean.User;
+import com.zw.weixin.service.UserService;
+import com.zw.weixin.util.SpringContextHolder;
 
 @Controller
 @RequestMapping("/user")

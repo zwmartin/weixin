@@ -1,9 +1,9 @@
-package com.zwtest.weixin.service.impl;
+package com.zw.weixin.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.zwtest.weixin.bean.User;
-import com.zwtest.weixin.service.UserService;
+import com.zw.weixin.bean.User;
+import com.zw.weixin.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {

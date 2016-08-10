@@ -1,4 +1,4 @@
-package com.zwtest.weixin.controller;
+package com.zw.weixin.controller;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.zwtest.weixin.base.BaseController;
-import com.zwtest.weixin.module.bean.WeiXinAccess;
-import com.zwtest.weixin.module.util.WeixinConstant;
-import com.zwtest.weixin.util.CodeUtil;
+import com.zw.weixin.base.BaseController;
+import com.zw.weixin.module.bean.WeiXinAccess;
+import com.zw.weixin.module.util.WeixinConstant;
+import com.zw.weixin.util.CodeUtil;
 
 /**
  * WeixinController

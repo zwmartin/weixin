@@ -1,4 +1,4 @@
-package com.zwtest.weixin.base;
+package com.zw.weixin.base;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class BaseController extends BaseLogger {
 
 	/**
-	 * Ð´³östrµ½ÍøÒ³ÖÐ
+	 * Ð´ï¿½ï¿½strï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 	 * 
 	 * @param response
 	 * @param str

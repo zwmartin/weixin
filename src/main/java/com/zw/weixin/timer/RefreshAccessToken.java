@@ -1,15 +1,15 @@
-package com.zwtest.weixin.timer;
+package com.zw.weixin.timer;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
 
-import com.zwtest.weixin.base.BaseLogger;
-import com.zwtest.weixin.http.HttpHandlerHelper;
-import com.zwtest.weixin.module.bean.AccessToken;
-import com.zwtest.weixin.module.bean.ErrorMsg;
-import com.zwtest.weixin.module.util.WeixinConstant;
-import com.zwtest.weixin.util.WeixinContext;
+import com.zw.weixin.base.BaseLogger;
+import com.zw.weixin.http.HttpHelper;
+import com.zw.weixin.module.bean.AccessToken;
+import com.zw.weixin.module.bean.ErrorMsg;
+import com.zw.weixin.module.util.WeixinConstant;
+import com.zw.weixin.util.WeixinContext;
 
 import net.sf.json.JSONObject;
 
@@ -24,7 +24,7 @@ public class RefreshAccessToken extends BaseLogger {
 	 */
 	public void refreshAccessToken() {
 		logger.debug("正在刷新access_oken......");
-		String accessTokenStr = HttpHandlerHelper.doGet(WeixinConstant.ACCESS_TOKEN_URL);
+		String accessTokenStr = HttpHelper.doGet(WeixinConstant.ACCESS_TOKEN_URL);
 		try {
 			AccessToken accessToken = (AccessToken) JSONObject.toBean(JSONObject.fromObject(accessTokenStr),
 					AccessToken.class);

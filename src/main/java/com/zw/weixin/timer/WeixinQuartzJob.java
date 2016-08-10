@@ -1,4 +1,4 @@
-package com.zwtest.weixin.timer;
+package com.zw.weixin.timer;
 
 import javax.annotation.Resource;
 

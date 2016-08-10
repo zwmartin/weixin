@@ -1,4 +1,4 @@
-package com.zwtest.weixin.base;
+package com.zw.weixin.base;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
