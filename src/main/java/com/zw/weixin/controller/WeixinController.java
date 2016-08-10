@@ -63,8 +63,7 @@ public class WeixinController extends BaseController {
 	 */
 	@RequestMapping(value = "/access", method = RequestMethod.POST)
 	public void handleMessage(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("UTF-8");  
-        response.setCharacterEncoding("UTF-8");
+		setCharacterEncoding(request, response);
 		InputStream is = request.getInputStream();
 		SAXReader saxReader = new SAXReader();
 		Document document = saxReader.read(is);

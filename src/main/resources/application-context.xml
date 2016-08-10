@@ -29,7 +29,7 @@
 		</property>
 		<!-- cron表达式 -->
 		<property name="cronExpression">
-			<value>0/30 0/30 * * * ?</value>   <!--  0/30 * * * * ?  --> 
+			<value>0/30 * * * * ?</value>   <!--    --> 
 		</property>
 	</bean>
 
