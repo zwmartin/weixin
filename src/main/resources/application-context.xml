@@ -8,6 +8,8 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
+	<context:property-placeholder location="classpath:config.properties"/>
+	
 	<!-- 定义调用对象和调用对象的方法 -->
 	<bean id="jobTask"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -25,11 +27,11 @@
 	<bean id="getAccessTokenTimer"
 		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail">
-			<ref bean="jobTask"/>
+			<ref bean="jobTask" />
 		</property>
 		<!-- cron表达式 -->
 		<property name="cronExpression">
-			<value>0/30 * * * * ?</value>   <!--    --> 
+			<value>0/30 * * * * ?</value>   <!-- -->
 		</property>
 	</bean>
 
