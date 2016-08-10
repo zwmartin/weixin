@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.zwtest.weixin.base.BaseController;
+import com.zwtest.weixin.module.bean.WeiXinAccess;
 import com.zwtest.weixin.module.util.WeixinConstant;
-import com.zwtest.weixin.util.CodeUtils;
+import com.zwtest.weixin.util.CodeUtil;
 
 /**
  * WeixinController
@@ -22,6 +23,7 @@ import com.zwtest.weixin.util.CodeUtils;
  * @version 创建时间：2016年8月10日
  */
 @Controller
+@RequestMapping("/wx")
 public class WeixinController extends BaseController {
 	/**
 	 * 微信接入
@@ -30,21 +32,17 @@ public class WeixinController extends BaseController {
 	 * @param reponse
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/wx", method = RequestMethod.GET)
-	public void access(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String signature = request.getParameter("signature");
-		String timestamp = request.getParameter("timestamp");
-		String nonce = request.getParameter("nonce");
-		String echostr = request.getParameter("echostr");
-		String[] arrs = { timestamp, WeixinConstant.TOKEN, nonce };
+	@RequestMapping(value = "/access", method = RequestMethod.GET)
+	public void access(HttpServletRequest request, HttpServletResponse response, WeiXinAccess access) throws Exception {
+		String[] arrs = { access.getTimestamp(), WeixinConstant.TOKEN, access.getNonce() };
 		Arrays.sort(arrs);
 		StringBuffer str = new StringBuffer();
 		for (String s : arrs) {
 			str.append(s);
 		}
-		String sha1 = CodeUtils.encodeSha1(str.toString());
-		if (signature.equals(sha1)) {
-			write(response, echostr);
+		String sha1 = CodeUtil.encodeSha1(str.toString());
+		if (access.getSignature().equals(sha1)) {
+			write(response, access.getEchostr());
 		}
 
 	}
@@ -56,7 +54,7 @@ public class WeixinController extends BaseController {
 	 * @param response
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/wx", method = RequestMethod.POST)
+	@RequestMapping(value = "/access", method = RequestMethod.POST)
 	public void handleMessage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
 		String str = null;

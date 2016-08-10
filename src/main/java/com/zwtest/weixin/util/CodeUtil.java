@@ -12,9 +12,9 @@ import org.slf4j.LoggerFactory;
  * @author Administrator
  *
  */
-public class CodeUtils {
+public class CodeUtil {
 
-	public static final Logger logger = LoggerFactory.getLogger(CodeUtils.class);
+	public static final Logger logger = LoggerFactory.getLogger(CodeUtil.class);
 
 	/**
 	 * sha1加密
