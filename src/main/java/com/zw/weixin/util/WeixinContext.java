@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class WeixinContext {
-	private static String ACCESS_TOKEN;
+	private String access_Token;
 
 	public void setAccessToken(String accessToken) {
-		ACCESS_TOKEN = accessToken;
+		this.access_Token = accessToken;
 	}
 
 	public String getAccessToken() {
-		return ACCESS_TOKEN;
+		return access_Token;
 	}
 }
