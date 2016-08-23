@@ -22,8 +22,14 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
+	<!-- log4j监听器 -->
 	<listener>
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+
+	<!-- 系统启动监听器 -->
+	<listener>
+		<listener-class>com.zw.weixin.util.SystemInitListener</listener-class>
 	</listener>
 
 	<context-param>
