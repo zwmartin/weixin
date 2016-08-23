@@ -10,9 +10,8 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
+import com.alibaba.fastjson.JSONObject;
 import com.zw.weixin.module.bean.AccessToken;
-
-import net.sf.json.JSONObject;
 
 public class TestHttpClient {
 
@@ -29,7 +28,7 @@ public class TestHttpClient {
 				HttpEntity entity = resp.getEntity();
 				String content = EntityUtils.toString(entity);
 				System.out.println(content);
-				AccessToken accessToken = (AccessToken) JSONObject.toBean(JSONObject.fromObject(content), AccessToken.class);
+				AccessToken accessToken = (AccessToken) JSONObject.parseObject(content, AccessToken.class);
 				System.out.println(accessToken.getAccess_token());
 				
 			}
