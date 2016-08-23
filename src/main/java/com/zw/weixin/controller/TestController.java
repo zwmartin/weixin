@@ -34,7 +34,7 @@ public class TestController {
 		
 		a3.getBean("userServiceImpl");
 		
-		User user = userService.getById("123");
+		User user = userService.getById(123);
 		ModelAndView mv = new ModelAndView("test");
 		return mv.addObject("user", user);
 
