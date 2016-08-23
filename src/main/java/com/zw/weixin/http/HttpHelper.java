@@ -42,7 +42,7 @@ public class HttpHelper {
 			int code = response.getStatusLine().getStatusCode();
 			if (code >= 200 && code < 300) {
 				HttpEntity entity = response.getEntity();
-				result = EntityUtils.toString(entity);
+				result = EntityUtils.toString(entity, "utf-8");
 			}
 		} catch (Exception e) {
 			logger.error("发送GET消息期间发生错误", e);

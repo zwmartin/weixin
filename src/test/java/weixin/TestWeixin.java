@@ -8,12 +8,11 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSONObject;
 import com.zw.weixin.http.HttpHelper;
 import com.zw.weixin.module.bean.AccessToken;
 import com.zw.weixin.module.bean.WeixinMenu;
 import com.zw.weixin.module.util.WeixinConstant;
-
-import net.sf.json.JSONObject;
 
 public class TestWeixin {
 
@@ -22,14 +21,16 @@ public class TestWeixin {
 	@Before
 	public void setUp() {
 		String result = HttpHelper.doGet(WeixinConstant.ACCESS_TOKEN_URL);
-		AccessToken accessToken = (AccessToken) JSONObject.toBean(JSONObject.fromObject(result), AccessToken.class);
+		AccessToken accessToken = (AccessToken) JSONObject.parseObject(result,
+				AccessToken.class);
 		this.accessToken = accessToken.getAccess_token();
 	}
 
 	public static void main(String[] args) {
 		String result = HttpHelper.doGet(WeixinConstant.ACCESS_TOKEN_URL);
 		System.out.println(result);
-		AccessToken accessToken = (AccessToken) JSONObject.toBean(JSONObject.fromObject(result), AccessToken.class);
+		AccessToken accessToken = (AccessToken) JSONObject.parseObject(result,
+				AccessToken.class);
 		System.out.println(accessToken.getAccess_token());
 	}
 
@@ -69,9 +70,10 @@ public class TestWeixin {
 
 		Map<String, List<WeixinMenu>> menu = new HashMap<String, List<WeixinMenu>>();
 		menu.put("button", menus);
-		String json = JSONObject.fromObject(menu).toString();
+		String json = JSONObject.toJSONString(menu);
 		System.out.println(json);
-		String url = WeixinConstant.MENU_ADDRESS.replace("ACCESS_TOKEN", accessToken);
+		String url = WeixinConstant.MENU_ADDRESS.replace("ACCESS_TOKEN",
+				accessToken);
 		String result = HttpHelper.doPost(url, json, "application/json");
 		System.out.println(result);
 	}
