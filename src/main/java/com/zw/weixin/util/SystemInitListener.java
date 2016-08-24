@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
  * 
  */
 public class SystemInitListener implements ServletContextListener {
-	Logger logger = LoggerFactory.getLogger(SystemInitListener.class);
+	private Logger logger = LoggerFactory.getLogger(SystemInitListener.class);
 
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
@@ -25,6 +25,7 @@ public class SystemInitListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
+		logger.info("---正在初始化系统：---");
 		WeixinContext weixinContext = SpringContextHolder.getBean("weixinContext");
 		Properties pro = new Properties();
 		try {
@@ -46,6 +47,7 @@ public class SystemInitListener implements ServletContextListener {
 		} catch (IOException e) {
 			logger.error("加载config.properties发生错误");
 		}
+		logger.info("---系统初始化完成：---");
 	}
 
 }

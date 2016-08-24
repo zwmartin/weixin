@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
 	SessionFactory sessionFactory;
 	
 	@Override
-	public User getById(int id) {
+	public User getById(Long id) {
 		return new User(id, "tomcat");
 	}
 

@@ -26,4 +26,10 @@ public class TestHibernate {
 		TestService testService = (TestService) ac.getBean("testService");
 		testService.saveTwoUsers();
 	}
+	
+	@Test
+	public void testBaseDao() throws Exception {
+		TestService testService = (TestService) ac.getBean("testService");
+		testService.findAll();
+	}
 }
