@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.zw.weixin.base.BaseController;
 import com.zw.weixin.module.bean.WeiXinAccess;
 import com.zw.weixin.module.message.MsgCenter;
-import com.zw.weixin.module.util.WeixinConstant;
 import com.zw.weixin.util.CodeUtil;
+import com.zw.weixin.util.WeixinContext;
 
 /**
  * WeixinController
@@ -32,6 +32,9 @@ public class WeixinController extends BaseController {
 	@Resource
 	private MsgCenter msgCenter;
 	
+	@Resource
+	private WeixinContext weixinContext;
+	
 	/**
 	 * 微信接入
 	 * 
@@ -41,7 +44,7 @@ public class WeixinController extends BaseController {
 	 */
 	@RequestMapping(value = "/access", method = RequestMethod.GET)
 	public void access(HttpServletRequest request, HttpServletResponse response, WeiXinAccess access) throws Exception {
-		String[] arrs = { access.getTimestamp(), WeixinConstant.TOKEN, access.getNonce() };
+		String[] arrs = { access.getTimestamp(), weixinContext.getTOKEN(), access.getNonce() };
 		Arrays.sort(arrs);
 		StringBuffer str = new StringBuffer();
 		for (String s : arrs) {

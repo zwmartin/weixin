@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * 
  * @author Administrator
  * @since 2016-06-01
- *
+ * 
  */
 public class BaseController extends BaseLogger {
 
@@ -66,7 +66,8 @@ public class BaseController extends BaseLogger {
 	 * @param request
 	 * @param response
 	 */
-	protected void setCharacterEncoding(HttpServletRequest request, HttpServletResponse response) {
+	protected void setCharacterEncoding(HttpServletRequest request,
+			HttpServletResponse response) {
 		try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {

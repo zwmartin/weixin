@@ -25,11 +25,16 @@ public class RefreshAccessToken extends BaseLogger {
 	 */
 	public void refreshAccessToken() {
 		logger.debug("正在刷新access_oken......");
-		String accessTokenStr = HttpHelper.doGet(WeixinConstant.ACCESS_TOKEN_URL);
-		AccessToken accessToken = JSONObject.parseObject(accessTokenStr, AccessToken.class);
+		String access_token_url = WeixinConstant.ACCESS_TOKEN_URL.replace(
+				"APPID", weixinContext.getAPPID()).replace("APPSECRET",
+				weixinContext.getAPPSECRET());
+		String accessTokenStr = HttpHelper.doGet(access_token_url);
+		AccessToken accessToken = JSONObject.parseObject(accessTokenStr,
+				AccessToken.class);
 		if (accessToken.getAccess_token() == null) {
 			errorCount++;
-			ErrorMsg errorMsg = JSONObject.parseObject(accessTokenStr, ErrorMsg.class);
+			ErrorMsg errorMsg = JSONObject.parseObject(accessTokenStr,
+					ErrorMsg.class);
 			logger.error("AccessToken刷新发生错误, 错误消息为：" + errorMsg.getErrmsg());
 			// 错误次数大于3次
 			if (errorCount >= 3) {
