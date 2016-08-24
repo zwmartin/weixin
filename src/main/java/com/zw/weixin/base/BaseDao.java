@@ -20,5 +20,5 @@ public interface BaseDao<T> {
 	List<T> getByIds(Long[] ids);
 
 	List<T> findAll();
-
+	
 }

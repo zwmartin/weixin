@@ -17,7 +17,7 @@ import com.zw.weixin.util.SpringContextHolder;
 @RequestMapping("/user")
 public class TestController {
 
-	@Resource(name = "userServiceImpl")
+	@Resource(name = "userService")
 	UserService userService;
 
 	@RequestMapping("/test")
@@ -28,11 +28,11 @@ public class TestController {
 				.getAttribute("org.springframework.web.servlet.FrameworkServlet.CONTEXT.springMVC");
 		//UserService service = (UserService) a1.getBean("userServiceImpl");
 		
-		a2.getBean("userServiceImpl");
+		a2.getBean("userService");
 		
 		WebApplicationContext a3 = (WebApplicationContext) SpringContextHolder.getApplicationContext();
 		
-		a3.getBean("userServiceImpl");
+		a3.getBean("userService");
 		
 		User user = userService.getById(123L);
 		ModelAndView mv = new ModelAndView("test");

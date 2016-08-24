@@ -1,6 +1,7 @@
 package com.zw.weixin.base;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -50,11 +51,17 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	@Override
 	public T getById(Long id) {
+		if(id == null) {
+			return null;
+		}
 		return (T) getSession().get(clazz, id);
 	}
 
 	@Override
 	public List<T> getByIds(Long[] ids) {
+		if(ids == null || ids.length == 0) {
+			return Collections.emptyList();
+		}
 		return getSession().createQuery( //
 				"FROM " + clazz.getSimpleName() + " WHERE id IN (:ids)") //
 				.setParameterList("ids", ids) //
