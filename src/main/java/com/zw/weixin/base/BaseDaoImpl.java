@@ -15,6 +15,7 @@ import org.hibernate.SessionFactory;
  * 
  * @param <T>
  */
+@Deprecated
 @SuppressWarnings("unchecked")
 public class BaseDaoImpl<T> implements BaseDao<T> {
 

@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.zw.weixin.service.TestService;
+import com.zw.weixin.service.UserService;
 
 public class TestHibernate {
 
@@ -20,16 +20,9 @@ public class TestHibernate {
 		System.out.println(sessionFactory);
 	}
 
-	// 测试事务
-	@Test
-	public void testTransaction() throws Exception {
-		TestService testService = (TestService) ac.getBean("testService");
-		testService.saveTwoUsers();
-	}
-	
 	@Test
 	public void testBaseDao() throws Exception {
-		TestService testService = (TestService) ac.getBean("testService");
-		testService.findAll();
+		UserService userService = (UserService) ac.getBean("userService");
+		userService.findAll();
 	}
 }

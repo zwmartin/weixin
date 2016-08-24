@@ -7,6 +7,7 @@ import java.util.List;
  * @author martin_zou 2016年8月24日
  * 
  */
+@Deprecated
 public interface BaseDao<T> {
 
 	void save(T entity);
